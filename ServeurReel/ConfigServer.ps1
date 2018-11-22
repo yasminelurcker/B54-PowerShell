@@ -1,0 +1,1 @@
+New-SmbShare -Name "DATA" -Path "C:\_Examen" -FullAccess "Everyone"
