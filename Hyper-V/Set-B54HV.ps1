@@ -11,7 +11,7 @@
 HyperV
 
 #>
-Install-WindowsFeature -Name Hyper-V -IncludeAllSubFeature
+Install-WindowsFeature -Name Hyper-V -IncludeAllSubFeature -IncludeManagementTools
 
 $HyperVSettings = @{
     VirtualHardDiskPath = "C:\_VirDisque"

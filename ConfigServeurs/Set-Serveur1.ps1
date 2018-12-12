@@ -4,11 +4,12 @@ net use R: \\538S1R16\DATA
 $password = ConvertTo-SecureString -AsPlainText "AAAaaa111" -Force
 $nicV1 = Get-NetAdapter
 Set-DnsClientServerAddress -InterfaceIndex $nicV1.ifIndex -ServerAddresses "10.57.54.100"
+
 #endregion
 ## TODO : Set-Serveur2.ps1 et Set-Serveur3.ps1, section général
 
 #section IIS
-Install-WindowsFeature -Name Web-WebServer,Web-Ftp-Server,Web-MGMT-Tools -IncludeAllSubFeature
+Install-WindowsFeature -Name Web-WebServer,Web-Ftp-Server,Web-MGMT-Tools -IncludeAllSubFeature -IncludeManagementTools
 
 $sitesDirectories = @("C:\_Web","C:\_Web\Public","C:\_Web\Prive","C:\_Web\Vendeurs","C:\_WebA1","C:\_WebA2","C:\_Web\ww1","C:\_Web\ww2","C:\_FTP","C:\_FTP\Public","C:\_FTP\Intranet","C:\_FTP\Personel")
 $utilisateurs = @("Pierre","Jean","Guy","Adminstrator","anonymous")

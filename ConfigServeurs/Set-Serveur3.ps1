@@ -7,4 +7,4 @@ Set-DnsClientServerAddress -InterfaceIndex $nicV1.ifIndex -ServerAddresses "172.
 #endregion
 
 #section DHCP
-Install-WindowsFeature -Name Web-WebServer,Web-FtpServer,Web-MGMT-Tools -IncludeAllSubFeature
+Install-WindowsFeature -Name DHCP -IncludeAllSubFeature -IncludeManagementTools

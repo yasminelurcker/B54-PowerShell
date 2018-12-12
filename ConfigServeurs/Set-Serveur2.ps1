@@ -7,7 +7,7 @@ Set-DnsClientServerAddress -InterfaceIndex $nicV1.ifIndex -ServerAddresses "127.
 #endregion
 
 #section DNS
-Install-WindowsFeature -Name DNS -IncludeAllSubFeature
+Install-WindowsFeature -Name DNS -IncludeAllSubFeature -IncludeManagementTools
 
 #section ROUTER
-Install-WindowsFeature -Name Routing -IncludeAllSubFeature
+Install-WindowsFeature -Name Routing -IncludeAllSubFeature -IncludeManagementTools
