@@ -3,6 +3,8 @@ Rename-Computer "538S1V16"
 net use R: \\538S1R16\DATA
 $password = ConvertTo-SecureString -AsPlainText "AAAaaa111" -Force
 $nicV1 = Get-NetAdapter
+Rename-NetAdapter -Name $nicV1.ifAlias -NewName "CartePublique"
+New-NetIPAddress -IPAddress "10.57.54.98" -InterfaceIndex $nicV1.ifIndex -PrefixLength 16 -DefaultGateway "10.57.1.1"
 Set-DnsClientServerAddress -InterfaceIndex $nicV1.ifIndex -ServerAddresses "10.57.54.100"
 
 #endregion
