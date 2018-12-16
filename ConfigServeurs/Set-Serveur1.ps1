@@ -1,6 +1,6 @@
 #region Général
 Rename-Computer "538S1V16"
-net use R: \\538S1R16\DATA
+net use R: \\10.57.54.100\DATA
 $password = ConvertTo-SecureString -AsPlainText "AAAaaa111" -Force
 $nicV1 = Get-NetAdapter
 Rename-NetAdapter -Name $nicV1.ifAlias -NewName "CartePublique"

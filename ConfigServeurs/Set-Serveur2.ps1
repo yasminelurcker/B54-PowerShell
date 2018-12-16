@@ -1,7 +1,6 @@
 #region Général
 Rename-Computer "538S2V16"
-net use R: \\538S1R16\DATA
-
+net use R: \\10.57.54.100\DATA
 
 $nicPub = Get-NetAdapter | Out-GridView -Title "Choisir carte publique" -PassThru
 Rename-NetAdapter -Name $nicPub.ifAlias -NewName "CartePublique"
