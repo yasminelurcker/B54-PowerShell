@@ -6,4 +6,4 @@ choco install git vscode
 Install-WindowsFeature -Name DNS -IncludeAllSubFeature -IncludeManagementTools
 
 new-item "C:\_Examen" -ItemType Directory
-New-SmbShare -Name "DATA" -Path "C:\_Examen" -FullAccess "Everyone"
+New-SmbShare -Name "DATA" -Path "C:\_Examen" -FullAccess "Tout le monde"
