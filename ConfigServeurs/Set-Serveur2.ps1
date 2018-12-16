@@ -6,6 +6,7 @@ $nicPub = Get-NetAdapter | Out-GridView -Title "Choisir carte publique" -PassThr
 Rename-NetAdapter -Name $nicPub.ifAlias -NewName "CartePublique"
 New-NetIPAddress -IPAddress "10.57.54.104" -InterfaceIndex $nicPub.ifIndex -PrefixLength 16 -DefaultGateway "10.57.1.1"
 Set-DnsClientServerAddress -InterfaceIndex $nicPub.ifIndex -ServerAddresses "127.0.0.1"
+New-NetFirewallRule -Name Allow_Ping -DisplayName “Allow Ping”  -Description “Packet Internet Groper ICMPv4” -Protocol ICMPv4 -IcmpType 8 -Enabled True -Profile Any -Action Allow
 
 $nicPrive = Get-NetAdapter | Where-Object { $_.ifIndex -ne $nicV1.ifIndex  }
 Rename-NetAdapter -Name $nicPrive.ifAlias -NewName "cartePrive"
