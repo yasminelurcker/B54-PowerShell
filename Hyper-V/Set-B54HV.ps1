@@ -28,7 +28,7 @@ $Nic = Get-NetAdapter | Where-Object {$_.Status -eq "Up"}
 
 Rename-NetAdapter -Name $Nic.Name -NewName "CartePublique"
 
-New-VMSwitch -Name "ComPublic" -SwitchType External -NetAdapterName $Nic.Name
+New-VMSwitch -Name "ComPublic" -SwitchType External -NetAdapterName "CartePublique"
 New-VMSwitch -Name "ComPrive" -SwitchType Private
 
 Write-Host ""
