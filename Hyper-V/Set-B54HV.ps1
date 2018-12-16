@@ -27,7 +27,9 @@ Set-VMHost @HyperVSettings
 #interface réseaux
 $Nic = Get-NetAdapter | Where-Object {$_.Status -eq "Up"}
 
-Rename-NetAdapter -Name $Nic.Name -NewName "CartePublique"
+$Nic = Rename-NetAdapter -Name $Nic.Name -NewName "CartePublique" -PassThru
+New-NetIPAddress -IPAddress "10.57.54.100" -InterfaceIndex $Nic.ifIndex -PrefixLength 16 -DefaultGateway "10.57.1.1"
+Set-DnsClientServerAddress -InterfaceIndex $Nic.ifIndex -ServerAddresses "127.0.0.1"
 
 New-VMSwitch -Name "ComPublic" -SwitchType External -NetAdapterName "CartePublique"
 New-VMSwitch -Name "ComPrive" -SwitchType Private
