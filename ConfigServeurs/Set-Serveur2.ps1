@@ -1,6 +1,6 @@
 #region Général
 Rename-Computer "538S2V16"
-net use R: \\10.57.54.100\DATA
+
 
 $nicPub = Get-NetAdapter | Out-GridView -Title "Choisir carte publique" -PassThru
 Rename-NetAdapter -Name $nicPub.ifAlias -NewName "CartePublique"
@@ -12,7 +12,7 @@ $nicPrive = Get-NetAdapter | Where-Object { $_.ifIndex -ne $nicV1.ifIndex  }
 Rename-NetAdapter -Name $nicPrive.ifAlias -NewName "cartePrive"
 New-NetIPAddress -IPAddress "172.16.54.104" -InterfaceAlias $nicPrive.ifAlias -DefaultGateway "10.57.54.104" -PrefixLength 16
 
-
+net use R: \\10.57.54.100\DATA
 #endregion
 
 #section DNS
