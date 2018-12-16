@@ -18,6 +18,7 @@ SUR SR
 Install-WindowsFeature -Name Hyper-V -IncludeAllSubFeature -IncludeManagementTools
 
 $HyperVSettings = @{
+    EnableEnhancedSessionMode = $true
     VirtualHardDiskPath = "C:\_VirDisque"
     VirtualMachinePath  = "C:\_VirOrdi"
 }
