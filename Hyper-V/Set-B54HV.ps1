@@ -28,11 +28,12 @@ Set-VMHost @HyperVSettings
 $Nic = Get-NetAdapter | Where-Object {$_.Status -eq "Up"}
 
 $Nic = Rename-NetAdapter -Name $Nic.Name -NewName "CartePublique" -PassThru
-New-NetIPAddress -IPAddress "10.57.54.100" -InterfaceIndex $Nic.ifIndex -PrefixLength 16 -DefaultGateway "10.57.1.1"
-Set-DnsClientServerAddress -InterfaceIndex $Nic.ifIndex -ServerAddresses "127.0.0.1"
 
 New-VMSwitch -Name "ComPublic" -SwitchType External -NetAdapterName "CartePublique"
 New-VMSwitch -Name "ComPrive" -SwitchType Private
+
+New-NetIPAddress -IPAddress "10.57.54.100" -InterfaceIndex $Nic.ifIndex -PrefixLength 16 -DefaultGateway "10.57.1.1"
+Set-DnsClientServerAddress -InterfaceIndex $Nic.ifIndex -ServerAddresses "127.0.0.1"
 
 Write-Host ""
 Read-Host -Prompt "vérifier la présence et les noms des disques."
@@ -58,3 +59,6 @@ $vm3 | set-vm -DynamicMemory -MemoryMinimumBytes $RAM[1] -MemoryMaximumBytes $RA
 $vm3 | Set-VMProcessor -Count 8
 
 #endregion
+
+# Mettre la mac address dans le presse papier
+(Get-VMNetworkAdapter -vm $vm2 | Out-GridView -PassThru).MacAddress | Set-Clipboard
