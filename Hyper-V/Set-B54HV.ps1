@@ -25,7 +25,7 @@ $HyperVSettings = @{
 $HyperVSettings.Values | ForEach-Object { New-Item -Path $_ -ItemType Directory }
 Set-VMHost @HyperVSettings
 #interface réseaux
-$Nic = Get-NetAdapter | Where-Object {$_.Status -eq "Up"}
+$Nic = Get-NetAdapter | Where-Object {$_.Status -eq "Up"} | Out-GridView -PassThru
 
 $Nic = Rename-NetAdapter -Name $Nic.Name -NewName "CartePublique" -PassThru
 
