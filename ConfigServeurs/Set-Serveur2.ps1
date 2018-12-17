@@ -20,3 +20,6 @@ Install-WindowsFeature -Name DNS -IncludeAllSubFeature -IncludeManagementTools
 
 #section ROUTER
 Install-WindowsFeature -Name Routing -IncludeAllSubFeature -IncludeManagementTools
+
+# Aide à la config de Routing : 
+# http://techgenix.com/using-windows-server-nat-router/
