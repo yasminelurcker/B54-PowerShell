@@ -29,7 +29,7 @@ $Nic = Get-NetAdapter | Where-Object {$_.Status -eq "Up"} | Out-GridView -PassTh
 
 $Nic = Rename-NetAdapter -Name $Nic.Name -NewName "CartePublique" -PassThru
 
-New-VMSwitch -Name "ComPublic" -SwitchType External -NetAdapterName "CartePublique"
+New-VMSwitch -Name "ComPublic" -NetAdapterName "CartePublique"
 New-VMSwitch -Name "ComPrive" -SwitchType Private
 
 New-NetIPAddress -IPAddress "10.57.54.100" -InterfaceIndex $Nic.ifIndex -PrefixLength 16 -DefaultGateway "10.57.1.1"
